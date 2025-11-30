@@ -13,29 +13,29 @@ O objetivo deste projeto é demonstrar o domínio de conceitos fundamentais da p
 - **Extrato Detalhado:** Listagem tabular de todas as movimentações.
 - **Relatórios Mensais:** Filtre seus gastos e ganhos por mês/ano específico.
 - **Gerenciamento de Metas:** Defina um objetivo financeiro e acompanhe o progresso (%) automaticamente.
-- **Persistência de Dados:** Todos os dados são salvos automaticamente em arquivos `.db` (formato compatível com CSV), garantindo que nada se perca ao fechar o programa.
+- **Persistência de Dados:** Todos os dados são salvos automaticamente em arquivos `.db`.
 
 ---
 
 ## 🛠️ Arquitetura do Projeto
 
-O código foi refatorado para seguir o princípio de **Separação de Preocupações (SoC)**, facilitando a manutenção e a escalabilidade.
+O código segue o princípio de **Separação de Preocupações (SoC)**.
 
 ```
 
 .
-├── src/            \# Implementação (.c)
-│   ├── main.c      \# Menu e fluxo principal
-│   ├── operations.c \# Lógica de negócios (Cálculos, Filtros)
-│   ├── storage.c   \# Camada de Persistência (Leitura/Escrita em disco)
-│   └── utils.c     \# Funções utilitárias (Helpers)
+├── src/                 # Implementação (.c)
+│   ├── main.c           # Menu e fluxo principal
+│   ├── operations.c     # Lógica de negócios (Cálculos, Filtros)
+│   ├── storage.c        # Persistência (Leitura/Escrita)
+│   └── utils.c          # Funções utilitárias
 │
-├── include/        \# Cabeçalhos e Contratos (.h)
-│   ├── models.h    \# Definições de Structs e Constantes
-│   ├── ...
+├── include/             # Cabeçalhos (.h)
+│   ├── models.h         # Structs e constantes
+│   └── ...
 │
-├── obj/            \# Arquivos objetos compilados (gerado automaticamente)
-└── Makefile        \# Automação de compilação
+├── obj/                 # Arquivos objeto (gerado automaticamente)
+└── Makefile             # Automação de compilação
 
 ````
 
@@ -44,69 +44,64 @@ O código foi refatorado para seguir o princípio de **Separação de Preocupaç
 ## 🚀 Como Rodar o Projeto
 
 ### Pré-requisitos
-Você precisará de um compilador C (GCC) e do utilitário `make`.
-*No Ubuntu/Debian:* `sudo apt install build-essential`
+Você precisará de GCC e `make`.
 
-### Passos
-1. Clone o repositório ou baixe os arquivos.
-2. Abra o terminal na pasta do projeto.
-3. Compile o código:
-   ```bash
-   make
+No Ubuntu/Debian:
+```bash
+sudo apt install build-essential
 ````
 
-4.  Execute o programa:
-    ```bash
-    ./finance_manager
-    ```
+### Passos
+
+1. Clone o repositório.
+2. Abra o terminal na pasta do projeto.
+3. Compile:
+
+```bash
+make
+```
+
+4. Execute:
+
+```bash
+./finance_manager
+```
 
 ### Limpeza
-
-Para remover os arquivos compilados (os dados salvos **não** serão apagados):
 
 ```bash
 make clean
 ```
 
------
+---
 
 ## 💾 Sobre os Dados
 
-O sistema gera dois arquivos na raiz:
+Arquivos gerados na raiz:
 
-1.  `transactions.db`: Contém o histórico de transações.
-2.  `goal.db`: Contém a meta financeira atual.
+* `transactions.db`
+* `goal.db`
 
-> **Dica:** O formato do arquivo `transactions.db` é `;` (ponto e vírgula). Você pode renomeá-lo para `.csv` e abri-lo diretamente no Excel ou Google Sheets\!
+O arquivo de transações usa `;` como separador — renomeie para `.csv` para abrir no Excel/Sheets.
 
------
+---
 
 ## 📚 Aprendizados Técnicos
 
-Durante o desenvolvimento deste projeto, foram aplicados:
+* Modularização com headers e múltiplos arquivos `.c`
+* Leitura e escrita segura em arquivos
+* Uso de ponteiros e passagem por referência
+* Tratamento de buffers com `fgets`
+* Makefile profissional para automação
 
-  - **Modularização em C:** Uso de *headers* e múltiplos arquivos fonte.
-  - **File I/O:** Leitura e escrita segura em arquivos de texto (parseamento de strings).
-  - **Gerenciamento de Buffer:** Uso de `fgets` para evitar estouro de buffer e leitura suja.
-  - **Ponteiros:** Passagem de dados por referência para otimização de memória.
-  - **Makefile:** Automação de *build* profissional.
-
------
+---
 
 ## 💡 Sugestões e Contribuições
 
-Este projeto foi desenvolvido para ser um ponto de partida limpo e funcional em C. Se você tem ideias para novos recursos, encontrou um bug ou acredita que a documentação (ou o código) pode ser melhorada, sua contribuição é muito bem-vinda!
+* Abra uma **Issue** no GitHub para relatar bugs ou sugerir melhorias.
+* Faça um **Fork** e envie um Pull Request com novas funcionalidades.
 
-### Como Sugerir ou Contribuir?
-
-Existem duas formas principais de interagir com o projeto:
-
-1.  **Abrir uma Issue (Preferencial):** Use a seção "Issues" do GitHub para descrever detalhadamente o problema que encontrou ou a nova funcionalidade que gostaria de ver. Isso ajuda a manter um registro organizado das pendências.
-2.  **Fazer um Fork:** Se você fez melhorias no código e gostaria de incorporá-las, sinta-se à vontade para fazer um *fork* do repositório, implementar as alterações e enviar um **Pull Request**.
-
-Toda e qualquer sugestão será analisada!
-
------
+---
 
 ## 👤 Autor
 
@@ -116,4 +111,4 @@ Desenvolvido por **Davi Afonso**.
 
 ## 📄 Licença
 
-Distribuído sob a **Licença MIT** — você pode usar, estudar, modificar e distribuir livremente.
+Distribuído sob a **Licença MIT**.
