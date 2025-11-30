@@ -1,0 +1,12 @@
+# Ignorar binários e objetos
+obj/
+finance_manager
+*.o
+*.exe
+
+# Ignorar banco de dados
+*.db
+
+# Ignorar arquivos temporários do sistema
+.DS_Store
+Thumbs.db
